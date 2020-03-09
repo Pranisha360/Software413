@@ -13,6 +13,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+import LanguageRoundedIcon from '@material-ui/icons/LanguageRounded';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -106,6 +108,8 @@ export default function ClippedDrawer() {
               <Tab label="Dashboard" {...a11yProps(0)} />
               <Tab label="Reports" {...a11yProps(1)} />
               <Tab label="Feedback" {...a11yProps(2)} />
+              <Tab icon={<AccountCircleRoundedIcon />} aria-label="AccountCircleRounded" />
+              <Tab icon={<LanguageRoundedIcon />} aria-label="LanguageRounded" />
             </Tabs>
           </Toolbar>
         </AppBar>
