@@ -26,6 +26,10 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Grid from '@material-ui/core/Grid';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -77,6 +81,12 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
   toolbar: theme.mixins.toolbar,
   offset: theme.mixins.toolbar,
 }));
@@ -104,13 +114,17 @@ export default function ClippedDrawer() {
       <React.Fragment>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
-            <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+            <Tabs value={value} onChange={handleChange} className={classes.title} color="inherit" aria-label="simple tabs example">
               <Tab label="Dashboard" {...a11yProps(0)} />
               <Tab label="Reports" {...a11yProps(1)} />
               <Tab label="Feedback" {...a11yProps(2)} />
-              <Tab icon={<AccountCircleRoundedIcon />} aria-label="AccountCircleRounded" />
-              <Tab icon={<LanguageRoundedIcon />} aria-label="LanguageRounded" />
             </Tabs>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="LanguageRounded">
+              <LanguageRoundedIcon />
+            </IconButton>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="AccountCircleRounded">
+              <AccountCircleRoundedIcon />
+            </IconButton>
           </Toolbar>
         </AppBar>
         <div className={classes.offset} />
