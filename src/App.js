@@ -79,6 +79,9 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
+    padding: theme.spacing(0),
+  },
+  textBox: {
     padding: theme.spacing(3),
   },
   menuButton: {
@@ -96,6 +99,13 @@ function createData(name, VeryD, Dissatisfied, Niether, Satisfied, VeryS, NA) {
 }
 
 const rows = [
+  createData('Considering my duties and responsibilities, I am satisfied with my case compensation.', 0, 0, 0, 0, 0, 0),
+  createData('I am satisfied with my benefits', 0, 0, 0, 0, 0, 0),
+  createData('I am satisfied with my non-cash rewards/perks', 0, 0, 0, 0, 0, 0),
+  createData('My organization pays well compared to other similar organizations in our industry.', 0, 0, 0, 0, 0, 0),
+];
+
+const rows2 = [
   createData('Considering my duties and responsibilities, I am satisfied with my case compensation.', 0, 0, 0, 0, 0, 0),
   createData('I am satisfied with my benefits', 0, 0, 0, 0, 0, 0),
   createData('I am satisfied with my non-cash rewards/perks', 0, 0, 0, 0, 0, 0),
@@ -152,7 +162,7 @@ export default function ClippedDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph>
+        <Typography variant="body1" className={classes.textBox} component={Paper}>
           1. Read each statement and indicate your level of agreement.
         </Typography>
         <TableContainer component={Paper}>
@@ -160,12 +170,12 @@ export default function ClippedDrawer() {
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
-                <TableCell align="right">Very Dissatisfied</TableCell>
-                <TableCell align="right">Dissatisfied</TableCell>
-                <TableCell align="right">Niether Agree nor Disagree</TableCell>
-                <TableCell align="right">Satisfied</TableCell>
-                <TableCell align="right">Very Satisfied</TableCell>
-                <TableCell align="right">N/A, No Opinion</TableCell>
+                <TableCell align="center">Very Dissatisfied</TableCell>
+                <TableCell align="center">Dissatisfied</TableCell>
+                <TableCell align="center">Niether Agree nor Disagree</TableCell>
+                <TableCell align="center">Satisfied</TableCell>
+                <TableCell align="center">Very Satisfied</TableCell>
+                <TableCell align="center">N/A, No Opinion</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -174,18 +184,18 @@ export default function ClippedDrawer() {
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right">{row.VeryD}</TableCell>
-                  <TableCell align="right">{row.Dissatisfied}</TableCell>
-                  <TableCell align="right">{row.Niether}</TableCell>
-                  <TableCell align="right">{row.Satisfied}</TableCell>
-                  <TableCell align="right">{row.VeryS}</TableCell>
-                  <TableCell align="right">{row.NA}</TableCell>
+                  <TableCell align="center">{row.VeryD}</TableCell>
+                  <TableCell align="center">{row.Dissatisfied}</TableCell>
+                  <TableCell align="center">{row.Niether}</TableCell>
+                  <TableCell align="center">{row.Satisfied}</TableCell>
+                  <TableCell align="center">{row.VeryS}</TableCell>
+                  <TableCell align="center">{row.NA}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-        <Typography paragraph>
+        <Typography variant="body1" className={classes.textBox} component={Paper}>
           2. Please select the theme(s) that best describe(s) the comment you made above.
         </Typography>
         <TableContainer component={Paper}>
@@ -193,24 +203,24 @@ export default function ClippedDrawer() {
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
-                <TableCell align="right">Fewest</TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right">Most</TableCell>
+                <TableCell align="center">Fewest</TableCell>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center">Most</TableCell>
+                <TableCell align="center"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => (
+              {rows2.map(row => (
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right">{row.VeryD}</TableCell>
-                  <TableCell align="right">{row.Dissatisfied}</TableCell>
-                  <TableCell align="right">{row.Niether}</TableCell>
-                  <TableCell align="right">{row.Satisfied}</TableCell>
-                  <TableCell align="right">{row.VeryS}</TableCell>
-                  <TableCell align="right">{row.NA}</TableCell>
+                  <TableCell align="center">{row.VeryD}</TableCell>
+                  <TableCell align="center">{row.Dissatisfied}</TableCell>
+                  <TableCell align="center">{row.Satisfied}</TableCell>
+                  <TableCell align="center">{row.VeryS}</TableCell>
+                  <TableCell align="center">{row.NA}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
