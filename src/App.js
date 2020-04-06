@@ -30,6 +30,14 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -89,10 +97,25 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 500,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(0),
   },
   toolbar: theme.mixins.toolbar,
-  offset: theme.mixins.toolbar,
 }));
+
+const styleToolbar2 = {
+  background: 'white',
+  color: 'black',
+};
 
 function createData(name, VeryD, Dissatisfied, Niether, Satisfied, VeryS, NA) {
   return { name, VeryD, Dissatisfied, Niether, Satisfied, VeryS, NA };
@@ -118,27 +141,63 @@ export default function ClippedDrawer() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [state, setState] = React.useState({
+    survey: '',
+    name: 'hai',
+  });
+
+  const handleChangeSurvey = (event) => {
+    const name = event.target.name;
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <React.Fragment>
-        <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
-            <Tabs value={value} onChange={handleChange} className={classes.title} color="inherit" aria-label="simple tabs example">
-              <Tab label="Dashboard" {...a11yProps(0)} />
-              <Tab label="Reports" {...a11yProps(1)} />
-              <Tab label="Feedback" {...a11yProps(2)} />
-            </Tabs>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="LanguageRounded">
-              <LanguageRoundedIcon />
-            </IconButton>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="AccountCircleRounded">
-              <AccountCircleRoundedIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <div className={classes.offset} />
-      </React.Fragment>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <Tabs value={value} onChange={handleChange} className={classes.title} color="inherit" aria-label="simple tabs example">
+            <Tab label="Dashboard" {...a11yProps(0)} />
+            <Tab label="Reports" {...a11yProps(1)} />
+            <Tab label="Feedback" {...a11yProps(2)} />
+          </Tabs>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="LanguageRounded">
+            <LanguageRoundedIcon />
+          </IconButton>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="AccountCircleRounded">
+            <AccountCircleRoundedIcon />
+          </IconButton>
+        </Toolbar>
+        <Toolbar style={styleToolbar2}>
+          <Typography edge="start" className={classes.title} variant="h6" noWrap>
+            Survey Report
+          </Typography>
+          <FormControl variant="filled" className={classes.formControl}>
+            <InputLabel shrink id="demo-simple-select-filled-label">
+              Survey
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              value={state.survey}
+              onChange={handleChangeSurvey}
+              displayEmpty
+              className={classes.selectEmpty}
+            >
+              <MenuItem value="">
+                <em>Engagement Survey</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+        </Toolbar>
+      </AppBar>
       <Divider />
       <Drawer
         className={classes.drawer}
@@ -147,6 +206,7 @@ export default function ClippedDrawer() {
           paper: classes.drawerPaper,
         }}
       >
+        <div className={classes.toolbar} />
         <div className={classes.toolbar} />
         <List>
           {['Job Satisfaction', 'Compensation', 'Work Enviornment', 'Performance Feedback', 'Professional Growth',
@@ -161,6 +221,7 @@ export default function ClippedDrawer() {
         </List>
       </Drawer>
       <main className={classes.content}>
+        <div className={classes.toolbar} />
         <div className={classes.toolbar} />
         <Typography variant="body1" className={classes.textBox} component={Paper}>
           1. Read each statement and indicate your level of agreement.
