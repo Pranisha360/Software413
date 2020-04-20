@@ -37,6 +37,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { withStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+import Radio from '@material-ui/core/Radio';
 
 
 function TabPanel(props) {
@@ -117,6 +120,11 @@ const styleToolbar2 = {
   color: 'black',
 };
 
+const styleToolbar3 = {
+  background: 'rgba(234, 236, 238)',
+  color: 'black',
+};
+
 function createData(name, VeryD, Dissatisfied, Niether, Satisfied, VeryS, NA) {
   return { name, VeryD, Dissatisfied, Niether, Satisfied, VeryS, NA };
 }
@@ -141,6 +149,27 @@ export default function ClippedDrawer() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [selectedValue1, setSelectedValue1] = React.useState('a');
+  const handleChange1 = (event) => {
+    setSelectedValue1(event.target.value);
+  };
+
+  const [selectedValue2, setSelectedValue2] = React.useState('a');
+  const handleChange2 = (event) => {
+    setSelectedValue2(event.target.value);
+  };
+
+  const [selectedValue3, setSelectedValue3] = React.useState('a');
+  const handleChange3 = (event) => {
+    setSelectedValue3(event.target.value);
+  };
+
+  const [selectedValue4, setSelectedValue4] = React.useState('a');
+  const handleChange4 = (event) => {
+    setSelectedValue4(event.target.value);
+  };
+
 
   const [state, setState] = React.useState({
     survey: '',
@@ -229,7 +258,7 @@ export default function ClippedDrawer() {
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
-              <TableRow>
+              <TableRow style={styleToolbar3}>
                 <TableCell></TableCell>
                 <TableCell align="center">Very Dissatisfied</TableCell>
                 <TableCell align="center">Dissatisfied</TableCell>
@@ -240,19 +269,240 @@ export default function ClippedDrawer() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    Considering my duties and responsibilities, I am satisfied with my case compensation.
                   </TableCell>
-                  <TableCell align="center">{row.VeryD}</TableCell>
-                  <TableCell align="center">{row.Dissatisfied}</TableCell>
-                  <TableCell align="center">{row.Niether}</TableCell>
-                  <TableCell align="center">{row.Satisfied}</TableCell>
-                  <TableCell align="center">{row.VeryS}</TableCell>
-                  <TableCell align="center">{row.NA}</TableCell>
-                </TableRow>
-              ))}
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue1 === 'a'}
+                      onChange={handleChange1}
+                      value="a"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'A' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue1 === 'b'}
+                      onChange={handleChange1}
+                      value="b"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'B' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue1 === 'c'}
+                      onChange={handleChange1}
+                      value="c"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'C' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue1 === 'd'}
+                      onChange={handleChange1}
+                      value="d"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'D' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue1 === 'e'}
+                      onChange={handleChange1}
+                      value="e"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'E' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue1 === 'f'}
+                      onChange={handleChange1}
+                      value="f"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'F' }}
+                    />
+                  </TableCell>
+            </TableBody>
+            <TableBody>
+                  <TableCell component="th" scope="row">
+                    I am satisfied with my benefits
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue2 === 'a'}
+                      onChange={handleChange2}
+                      value="a"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'A' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue2 === 'b'}
+                      onChange={handleChange2}
+                      value="b"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'B' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue2 === 'c'}
+                      onChange={handleChange2}
+                      value="c"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'C' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue2 === 'd'}
+                      onChange={handleChange2}
+                      value="d"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'D' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue2 === 'e'}
+                      onChange={handleChange2}
+                      value="e"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'E' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue2 === 'f'}
+                      onChange={handleChange2}
+                      value="f"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'F' }}
+                    />
+                  </TableCell>
+            </TableBody>
+            <TableBody>
+                  <TableCell component="th" scope="row">
+                    I am satisfied with my non-cash rewards/perks
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue3 === 'a'}
+                      onChange={handleChange3}
+                      value="a"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'A' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue3 === 'b'}
+                      onChange={handleChange3}
+                      value="b"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'B' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue3 === 'c'}
+                      onChange={handleChange3}
+                      value="c"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'C' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue3 === 'd'}
+                      onChange={handleChange3}
+                      value="d"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'D' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue3 === 'e'}
+                      onChange={handleChange3}
+                      value="e"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'E' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue3 === 'f'}
+                      onChange={handleChange3}
+                      value="f"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'F' }}
+                    />
+                  </TableCell>
+            </TableBody>
+            <TableBody>
+                  <TableCell component="th" scope="row">
+                    My organization pays well compared to other similar organizations in our industry.
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue4 === 'a'}
+                      onChange={handleChange4}
+                      value="a"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'A' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue4 === 'b'}
+                      onChange={handleChange4}
+                      value="b"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'B' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue4 === 'c'}
+                      onChange={handleChange4}
+                      value="c"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'C' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue4 === 'd'}
+                      onChange={handleChange4}
+                      value="d"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'D' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue4 === 'e'}
+                      onChange={handleChange4}
+                      value="e"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'E' }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Radio
+                      checked={selectedValue4 === 'f'}
+                      onChange={handleChange4}
+                      value="f"
+                      name="radio-button-demo"
+                      inputProps={{ 'aria-label': 'F' }}
+                    />
+                  </TableCell>
             </TableBody>
           </Table>
         </TableContainer>
@@ -262,7 +512,7 @@ export default function ClippedDrawer() {
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
-              <TableRow>
+              <TableRow style={styleToolbar3}>
                 <TableCell></TableCell>
                 <TableCell align="center">Fewest</TableCell>
                 <TableCell align="center"></TableCell>
