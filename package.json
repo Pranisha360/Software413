@@ -12,6 +12,7 @@
     "apollo-boost": "^0.4.7",
     "apollo-client-preset": "1.0.8",
     "apollo-link": "1.2.13",
+    "firebase": "^7.14.2",
     "graphql": "^14.6.0",
     "graphql-tag": "2.10.1",
     "react": "^16.12.0",
